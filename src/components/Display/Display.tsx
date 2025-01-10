@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./Display.css";
-import Sidebar from "./components/Sidebar/Sidebar.tsx";
-import TransactionContainer from "./components/TransactionContainer/TransactionContainer.tsx";
+import Sidebar from "../Sidebar/Sidebar.tsx";
+import TransactionContainer from "../TransactionContainer/TransactionContainer.tsx";
 
 interface TransactionData {
   id: number;

@@ -1,10 +1,9 @@
-import "./App.css";
-import Display from "./Display.tsx";
+import Page from "./pages/Page.tsx";
 
 function App() {
   return (
     <>
-      <Display />
+      <Page />
     </>
   );
 }
