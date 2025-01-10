@@ -1,0 +1,16 @@
+.add-expense-button {
+    width: 3vw;
+    height: 3vw;
+    border: none;
+    background-color: #3700b3;
+    color: white;
+    font-size: 2vw;
+}
+
+.add-expense-button:hover {
+    background-color: #3801af;
+}
+
+.add-expense-button:active {
+    background-color: #2e018f;
+}
