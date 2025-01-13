@@ -1,7 +1,12 @@
-import { useEffect, useState } from "react";
 import "./Display.css";
 import Sidebar from "../Sidebar/Sidebar.tsx";
 import TransactionContainer from "../TransactionContainer/TransactionContainer.tsx";
+import {
+  addTransaction,
+  deleteTransaction,
+} from "../../transactionListSlice.ts";
+import { useDispatch, useSelector } from "react-redux";
+import type { RootState } from "../../store";
 
 interface TransactionData {
   id: number;
@@ -12,12 +17,11 @@ interface TransactionData {
 }
 
 const Display = () => {
-  const [transactions, setTransactions] = useState(() => {
-    const savedTransactions = localStorage.getItem("transactions");
-    return savedTransactions ? JSON.parse(savedTransactions) : [];
-  });
-  const addTransaction = (transactionData: TransactionData) => {
-    console.log("The transaction is:", transactionData);
+  const transactions =
+    useSelector((state: RootState) => state.transactions.transactions) || [];
+  const dispatch = useDispatch();
+  const handleAddTransaction = (transactionData: TransactionData) => {
+    dispatch(addTransaction(transactionData));
 
     fetch("https://jsonplaceholder.typicode.com/posts", {
       method: "POST",
@@ -25,50 +29,30 @@ const Display = () => {
         "Content-type": "application/json",
       },
       body: JSON.stringify(transactionData),
-    })
-      .then((res) =>
-        res.ok
-          ? setTransactions([...transactions, transactionData])
-          : console.log("Transaction Addition Failed!"),
-      )
-      .catch((error) => console.log("Error:", error));
+    });
   };
 
-  useEffect(() => {
-    localStorage.setItem("transactions", JSON.stringify(transactions));
-  }, [transactions]);
-
-  const deleteTransaction = (i: number) => {
-    setTransactions(
-      transactions.filter(
-        (transaction: TransactionData) => transaction.id !== i,
-      ),
-    );
-    console.log(
-      "Deleted Transaction: ",
-      transactions.filter(
-        (transaction: TransactionData) => transaction.id === i,
-      ),
-    );
-
+  const handleDeleteTransaction = (i: number) => {
     fetch(`https://jsonplaceholder.typicode.com/posts/${i}`, {
       method: "DELETE",
-    }).then((res) =>
-      res.ok
-        ? setTransactions(
-            transactions.filter(
-              (transaction: TransactionData) => transaction.id !== i,
-            ),
-          )
-        : console.log("Transaction Deletion Failed!"),
-    );
+    }).then((res) => {
+      if (res.ok) {
+        // Find the transaction to delete
+        const transactionToDelete = transactions.find((t) => t.id === i);
+        if (transactionToDelete) {
+          dispatch(deleteTransaction(transactionToDelete));
+        }
+      } else {
+        console.log("Transaction Deletion Failed!");
+      }
+    });
   };
   return (
     <div className="container">
-      <Sidebar onSubmit={addTransaction} />
+      <Sidebar onSubmit={handleAddTransaction} />
       <TransactionContainer
         transactions={transactions}
-        onDelete={deleteTransaction}
+        onDelete={handleDeleteTransaction}
       />
     </div>
   );

@@ -8,16 +8,15 @@
     height: 100%;
     background-color: #eceaea;
     width: 20vw;
-
+    margin-right: -15px;
+    z-index: 1;
+    border-radius: 0 0 5px 5px;
 }
 
 .sidebar-title {
-    margin-top: 5%;
-    margin-left: 5%;
-    margin-right: 5%;
     font-size: 1.5vw;
     font-family: "Arial Black", serif;
-    margin-bottom: -5%;
+    margin: 5% 5% -5% 5%;
 }
 
 .field {

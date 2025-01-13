@@ -23,9 +23,9 @@ const TransactionContainer = ({
       {transactions
         .slice(0)
         .reverse()
-        .map((transaction: TransactionData, index: number) => (
+        .map((transaction: TransactionData) => (
           <TransactionCard
-            key={index}
+            key={transaction.id}
             transaction={transaction}
             onDelete={onDelete}
           />

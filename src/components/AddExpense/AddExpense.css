@@ -5,6 +5,9 @@
     background-color: #3700b3;
     color: white;
     font-size: 2vw;
+    box-shadow: 2px 3px yellow;
+    z-index: 1;
+    border-radius: 10px;
 }
 
 .add-expense-button:hover {
