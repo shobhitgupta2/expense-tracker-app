@@ -10,12 +10,10 @@ interface TransactionItem {
 }
 
 interface TransactionListState {
-  loading: boolean;
   transactions: TransactionItem[];
 }
 
 const initialState: TransactionListState = {
-  loading: false,
   transactions: [],
 };
 

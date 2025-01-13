@@ -1,4 +1,3 @@
-import "./TransactionContainer.css";
 import TransactionCard from "../TransactionCard/TransactionCard.tsx";
 
 type TransactionData = {
@@ -19,7 +18,7 @@ const TransactionContainer = ({
   onDelete,
 }: TransactionDataProps) => {
   return (
-    <div className="transaction-container">
+    <div className="h-full w-1/2 overflow-scroll overflow-x-hidden overflow-y-auto">
       {transactions
         .slice(0)
         .reverse()

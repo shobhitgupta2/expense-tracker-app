@@ -2,6 +2,7 @@ import Page from "./pages/Page.tsx";
 import { Provider } from "react-redux";
 import store, { persistor } from "./store";
 import { PersistGate } from "redux-persist/integration/react";
+import "./index.css";
 
 function App() {
   return (

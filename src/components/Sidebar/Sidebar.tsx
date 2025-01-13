@@ -1,4 +1,3 @@
-import "./Sidebar.css";
 import AddExpense from "../AddExpense/AddExpense.tsx";
 import TransactionForm from "../TransactionForm/TransactionForm.tsx";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
@@ -24,9 +23,11 @@ const Sidebar = ({ onSubmit }: SidebarProps) => {
   };
 
   return (
-    <div className="sidebar-container">
-      <div className="sidebar">
-        <div className="sidebar-title">Add Transaction</div>
+    <div className="flex h-full w-1/4">
+      <div className="h-full w-3/4 bg-[#eceaea] -mr-2 z-1">
+        <div className="text-3xl font-bold text-[black] m-3">
+          Add Transaction
+        </div>
         <FormProvider {...methods}>
           <form id="transaction-form" onSubmit={handleSubmit(handleFormSubmit)}>
             <TransactionForm />

@@ -1,5 +1,3 @@
-import "./TransactionCard.css";
-
 type TransactionData = {
   id: number;
   name: string;
@@ -22,8 +20,8 @@ const TransactionCard = ({ transaction, onDelete }: TransactionDataProps) => {
     minute: "2-digit",
   });
   return (
-    <div className="card">
-      <div className="card-header">
+    <div className="bg-[#eceaea] border-4 border-[#bb86fc] rounded-3xl h-max w-10/12 m-6 p-5">
+      <div className="flex flex-row justify-between mb-5">
         <p
           style={{
             color:
@@ -38,13 +36,13 @@ const TransactionCard = ({ transaction, onDelete }: TransactionDataProps) => {
         <button
           type="button"
           onClick={() => onDelete(transaction.id)}
-          className="remove-button"
+          className="-mt-1 bg-[#3700b3] text-center text-[white] rounded-lg border-none h-8 w-16"
         >
           <b>Delete</b>
         </button>
       </div>
       <h2 style={{ marginBottom: -6 }}>{transaction.name}</h2>
-      <div className="card-bottom">
+      <div className="flex flex-row justify-between">
         <p style={{ marginBottom: -3 }}>
           <i>Details:</i>
           <br />
