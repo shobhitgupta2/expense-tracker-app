@@ -1,4 +1,4 @@
-import TransactionCard from "../TransactionCard/TransactionCard.tsx";
+import TransactionCard from "./TransactionCard.tsx";
 
 type TransactionData = {
   id: number;

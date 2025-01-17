@@ -1,5 +1,5 @@
-import AddExpense from "../AddExpense/AddExpense.tsx";
-import TransactionForm from "../TransactionForm/TransactionForm.tsx";
+import AddExpense from "./AddExpense.tsx";
+import TransactionForm from "./TransactionForm.tsx";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 
 interface FormFields {

@@ -5,8 +5,5 @@
 @layer base {
     body {
         @apply bg-[#07072b]
-    },
-    select {
-        appearance: none !important;
     }
 }

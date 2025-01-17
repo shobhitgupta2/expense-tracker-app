@@ -1,4 +1,4 @@
-import Display from "../components/Display/Display.tsx";
+import Display from "../components/Display.tsx";
 
 const Page = () => {
   return (

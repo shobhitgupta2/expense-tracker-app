@@ -1,11 +1,8 @@
-import Sidebar from "../Sidebar/Sidebar.tsx";
-import TransactionContainer from "../TransactionContainer/TransactionContainer.tsx";
-import {
-  addTransaction,
-  deleteTransaction,
-} from "../../transactionListSlice.ts";
+import Sidebar from "./Sidebar.tsx";
+import TransactionContainer from "./TransactionContainer.tsx";
+import { addTransaction, deleteTransaction } from "../transactionListSlice.ts";
 import { useDispatch, useSelector } from "react-redux";
-import type { RootState } from "../../store";
+import type { RootState } from "../store.ts";
 
 interface TransactionData {
   id: number;
@@ -40,7 +37,6 @@ const Display = () => {
       method: "DELETE",
     }).then((res) => {
       if (res.ok) {
-        // Find the transaction to delete
         const transactionToDelete = transactions.find((t) => t.id === i);
         if (transactionToDelete) {
           dispatch(deleteTransaction(transactionToDelete));
